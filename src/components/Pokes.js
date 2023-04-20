@@ -1,15 +1,15 @@
 import React from "react";
 import uniqueId from "uniqueid";
 
-const Pokes = (props) => {
-  const {list} = props;
+const Pokes = ({pokeList}) => {
+  console.log(pokeList);
 
   return (
     <div className="poke-container">
-      {list.map(el => {
+      {pokeList.map(el => {
         return (
           <div className="card" key={uniqueId()}>
-            <img src={el.image} alt="avatar" />
+            <img src={el.url} alt="avatar" />
             <p className="name">{el.name}</p>
           </div>
         )
