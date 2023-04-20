@@ -10,20 +10,18 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
 
   useEffect(()=> {
-    fetchApi();
-
+    (async function fetchApi() {
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon');
+      const { results } = await response.json();
+      setPokeList(results)
+    })()
   }, [])
 
-  const fetchApi = async () => {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon');
-    const data = await response.json();
 
-    console.log(data)
-  }
 
   return (
     <div className="App">
-     
+     <Pokes pokeList={pokeList} />
     </div>
   );
 }
